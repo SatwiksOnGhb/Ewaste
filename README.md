@@ -1,2 +1,7 @@
 # Ewaste
-An attempt to make an algo to make an e waste separator
+
+This script is used to train a deep learning model based on the AlexNet architecture for classifying images as either e-waste or non-e-waste. The dataset is loaded from a directory that contains the images arranged in class folders. The code automatically splits the data into 80% for training and 20% for validation. Every image is resized to 227×227 pixels (the input size used by AlexNet), and a normalization layer is applied so that the pixel values are scaled between 0 and 1. This helps the model train more efficiently.
+
+The model itself includes several convolutional layers, batch normalization layers, and max-pooling layers, following the structure of AlexNet. After these layers, the output is flattened and passed through five fully connected (Dense) layers, each followed by dropout to reduce overfitting. The final output layer uses a sigmoid activation because the task is binary classification. The model is compiled using the Adam optimizer with a learning rate of 0.0005 and binary cross-entropy as the loss function. Early stopping is used during training to stop the process if the validation loss does not improve.
+
+After the training is complete, the script saves the trained model as a .h5 file. It then creates and saves a plot showing the training and validation accuracy and loss over the training epochs. To evaluate the model, the script predicts on the validation dataset and generates a confusion matrix, which is saved as an image. It also creates a detailed classification report containing precision, recall, F1-score, and AUC score, and saves this report to a text file. 
